@@ -4,10 +4,10 @@ import random
 def start_game(words_list):
     attempts = 7
     play_game = True
-    # List to make sure that player can only choose 1 character at a time
+    # List to make sure that player can only choose 1 letter at a time
     choices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     
-    # Creating unnown word by using "_"
+    # Creating unknown word by using "_"
     selected_word = random.choice(words_list).lower()
     not_guessed_word = ""
     for c in selected_word:
@@ -20,7 +20,7 @@ def start_game(words_list):
     print(not_guessed_word)
     # Main game logic
     while(play_game): 
-        user_choice = input("Please enter a letter: ").lower()
+        user_choice = input("Please enter a letter or a word: ").lower()
         if user_choice in choices: 
             choices.remove(user_choice)
             if user_choice not in selected_word:
@@ -40,9 +40,16 @@ def start_game(words_list):
 
                 if play_again == "y":
                     start_game(words_list)
-                else:
+                if play_again == "n":
                     play_game = False
                     return 1
+        elif user_choice == selected_word:
+            not_guessed_word = selected_word
+            play_again = input("You win! Play again? Y/N: ")  
+            if play_again == "y":
+                start_game(words_list)
+            if play_again == "n":
+                play_game = False
         else:
             print(f"Invalid choice or you already selected {user_choice}. Please select a different letter.")
 
@@ -84,125 +91,32 @@ while True:
         
         if category_menu_choice == "1":
             words_list = [
-            "computer",
-            "programming",
-            "hangman",
-            "python",
-            "developer",
-            "keyboard",
-            "software",
-            "internet",
-            "database",
-            "algorithm",
-            "variable",
-            "function",
-            "debugging",
-            "version",
-            "code",
-            "project",
-            "repository",
-            "collaboration",
-            "framework",
-            "documentation"
+            "computer", "programming", "hangman", "python", "developer", "keyboard", "software",
+            "internet", "database", "algorithm", "variable", "function", "debugging", "version",
+            "code", "project", "repository", "collaboration", "framework", "documentation"
         ]
         elif category_menu_choice == "2":
             words_list = [
-            "Toyota",
-            "Honda",
-            "Ford",
-            "Chevrolet",
-            "Nissan",
-            "BMW",
-            "Mercedes-Benz",
-            "Volkswagen",
-            "Audi",
-            "Hyundai",
-            "Jeep",
-            "Subaru",
-            "Tesla",
-            "Kia",
-            "Ferrari",
-            "Lamborghini",
-            "Porsche",
-            "Mitsubishi",
-            "Volvo",
-            "Mazda",
-            "Lexus",
-            "Jaguar",
-            "Chrysler",
-            "Dodge",
-            "Buick",
-            "Cadillac",
-            "Land Rover",
-            "Infiniti",
-            "Acura"
+            "Toyota", "Honda", "Ford", "Chevrolet", "Nissan", "BMW", "Mercedes-Benz", "Volkswagen",
+            "Audi", "Hyundai", "Jeep", "Subaru", "Tesla", "Kia", "Ferrari", "Lamborghini", "Porsche",
+            "Mitsubishi", "Volvo", "Mazda", "Lexus", "Jaguar", "Chrysler", "Dodge", "Buick",
+            "Cadillac", "Land Rover", "Infiniti", "Acura"
         ]
         
         elif category_menu_choice == "3":
             words_list = [
-            "United States",
-            "Canada",
-            "United Kingdom",
-            "Australia",
-            "Germany",
-            "France",
-            "Japan",
-            "Brazil",
-            "India",
-            "China",
-            "South Africa",
-            "Mexico",
-            "Italy",
-            "Spain",
-            "Russia",
-            "South Korea",
-            "Argentina",
-            "Sweden",
-            "New Zealand",
-            "Singapore",
-            "Egypt",
-            "Thailand",
-            "Ireland",
-            "Greece",
-            "Turkey",
-            "Netherlands",
-            "Norway",
-            "Denmark",
-            "Finland"
+            "United States", "Canada", "United Kingdom", "Australia", "Germany", "France", "Japan",
+            "Brazil", "India", "China", "South Africa", "Mexico", "Italy", "Spain", "Russia",
+            "South Korea", "Argentina", "Sweden", "New Zealand", "Singapore", "Egypt", "Thailand",
+            "Ireland", "Greece", "Turkey", "Netherlands", "Norway", "Denmark", "Finland"
         ]
 
         elif category_menu_choice == "4":
             words_list = [
-            "Lion",
-            "Elephant",
-            "Tiger",
-            "Giraffe",
-            "Cheetah",
-            "Kangaroo",
-            "Dolphin",
-            "Penguin",
-            "Gorilla",
-            "Zebra",
-            "Polar Bear",
-            "Koala",
-            "Chimpanzee",
-            "Orangutan",
-            "Panda",
-            "Hippopotamus",
-            "Leopard",
-            "Rhinoceros",
-            "Camel",
-            "Gazelle",
-            "Koala",
-            "Peacock",
-            "Sloth",
-            "Snake",
-            "Jaguar",
-            "Cheetah",
-            "Squirrel",
-            "Owl",
-            "Puma",
-            "Bear"
+            "Lion", "Elephant", "Tiger", "Giraffe", "Cheetah", "Kangaroo", "Dolphin", "Penguin",
+            "Gorilla", "Zebra", "Polar Bear", "Koala", "Chimpanzee", "Orangutan", "Panda",
+            "Hippopotamus", "Leopard", "Rhinoceros", "Camel", "Gazelle", "Koala", "Peacock",
+            "Sloth", "Snake", "Jaguar", "Cheetah", "Squirrel", "Owl", "Puma", "Bear"
         ]
                     
         start_game(words_list)
