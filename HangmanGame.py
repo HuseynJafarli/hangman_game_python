@@ -19,7 +19,7 @@ def start_game(words_list):
     print(f"You have {attempts} attempts. Start guessing!")
     print(not_guessed_word)
     # Main game logic
-    while(play_game): 
+    while(play_game):
         user_choice = input("Please enter a letter or a word: ").lower()
         if user_choice in choices: 
             choices.remove(user_choice)
