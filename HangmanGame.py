@@ -130,4 +130,3 @@ while True:
         # Quit the game
         print("Goodbye!")
         break
-# Define a function to display the hangman figure
